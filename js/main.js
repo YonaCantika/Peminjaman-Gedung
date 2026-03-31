@@ -28,9 +28,10 @@ document.querySelector(".theme-icon span").addEventListener("click", () => {
 let landing = document.querySelector(".landing");
 
 let myImgsSrc = [
-  "images/hero_bg_1.jpg",
-  "images/hero_bg_2.jpg",
-  "images/hero_bg_3.jpg",
+  "images/gedung/1.jpeg",
+  "images/gedung/2.jpeg",
+  "images/gedung/3.jpeg",
+  "images/gedung/4.jpeg"
 ];
 const duration = 10000;
 

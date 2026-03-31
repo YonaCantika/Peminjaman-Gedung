@@ -1,4 +1,59 @@
 section.product {
+  .booking-card {
+    background-color: rgba($primary, 0.02);
+    border: 1px solid rgba($primary, 0.14);
+  }
+
+  .booking-subtitle {
+    font-size: $fs-14;
+    line-height: 1.7;
+  }
+
+  .booking-form {
+    label {
+      color: $primary;
+      font-size: $fs-14;
+      font-weight: $fw-700;
+      letter-spacing: 0.01em;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 0.625rem;
+      border: 1px solid rgba($primary, 0.2);
+      background-color: $white;
+      color: $primary-dark;
+      font-size: $fs-14;
+      padding: 0.625rem 0.875rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      min-height: 2.875rem;
+    }
+
+    .form-control::placeholder {
+      color: $text-color-black-50;
+    }
+
+    .form-select {
+      color: $text-color-black-50;
+    }
+
+    .form-select:valid {
+      color: $primary-dark;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: rgba($secondary, 0.7);
+      box-shadow: 0 0 0 0.2rem rgba($secondary, 0.18);
+    }
+
+    .booking-submit {
+      font-size: $fs-14;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+  }
+
   .features {
     color: $text-color-black-50;
     .item {

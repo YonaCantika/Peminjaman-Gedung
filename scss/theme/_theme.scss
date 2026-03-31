@@ -199,5 +199,40 @@ body.dark-theme {
     .owner {
       border-color: #003333 !important;
     }
+
+    .booking-card {
+      background-color: rgba($white, 0.04);
+      border-color: rgba($white, 0.14);
+    }
+
+    .booking-form {
+      label {
+        color: $title-color;
+      }
+
+      .form-control,
+      .form-select {
+        background-color: rgba($white, 0.03);
+        border-color: rgba($white, 0.2);
+        color: $title-color;
+
+        &::placeholder {
+          color: $text-color-white-50;
+        }
+
+        &:focus {
+          border-color: rgba($white, 0.6);
+          box-shadow: 0 0 0 0.2rem rgba($white, 0.12);
+        }
+      }
+
+      .form-select {
+        color: $text-color-white-50;
+
+        &:valid {
+          color: $title-color;
+        }
+      }
+    }
   }
 }
