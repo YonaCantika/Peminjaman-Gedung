@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   position: relative;
   font-family: "Work Sans", sans-serif;
@@ -1038,6 +1042,89 @@ body.dark-theme .product .booking-form .form-select {
 
 body.dark-theme .product .booking-form .form-select:valid {
   color: #f2f3f2;
+}
+
+.calendar-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  /* Tetap lebar penuh sesuai kolom */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  background-color: #005555;
+  padding: 10px 20px;
+  /* Padding atas-bawah lebih tipis */
+}
+
+.calendar-header h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.days-name {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  color: #005555;
+  padding: 5px 0;
+  /* Gap antar baris nama hari sangat tipis */
+  font-size: 0.75rem;
+  background-color: rgba(0, 85, 85, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 5px;
+  /* Jarak pinggir dalam kalender tipis */
+}
+
+.day {
+  /* Angka 0.4 atau 0.5 membuat kotak jadi sangat ceper (lebar > tinggi) */
+  aspect-ratio: 1 / 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  margin: 1px;
+  /* Jarak antar kotak tanggal dibuat minimal */
+  border-radius: 4px;
+}
+
+.day:hover:not(.booked) {
+  background-color: rgba(0, 85, 85, 0.1);
+}
+
+.day.booked {
+  background-color: #fce4e4;
+  color: #d9534f;
+}
+
+.day.selected {
+  background-color: #005555 !important;
+  color: white !important;
+}
+
+.calendar-footer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  font-size: 0.8rem;
+}
+
+.legend-item span {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
 }
 
 /*# sourceMappingURL=style.css.map */

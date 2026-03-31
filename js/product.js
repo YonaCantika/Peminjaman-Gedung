@@ -1,40 +1,29 @@
-//
-//
 let productCount = localStorage.getItem("product-count");
 let address = localStorage.getItem("product-address");
 let place = localStorage.getItem("product-place");
 let price = localStorage.getItem("product-price");
 
-let ownersArr = [
-  "Jake Oslo",
-  "Traverse You",
-  "Andrew Tate",
-  "Grilse Twee",
-  "Ali Taha",
-  "Mohamed Ramy",
-  "Jemmy Cutler",
-  "Abdo Magdy",
-  "Omar Salah",
-  "Karem Hasan",
-  "Albert Bah",
-  "Welt Jackson",
-];
+// 1. Sinkronisasi Gambar Landing sesuai klik (Contoh: Card 1 -> gedung/1.jpeg)
+let landingSub = document.querySelector(".landing.sub");
+if (landingSub && productCount) {
+  landingSub.style.backgroundImage = `url('images/gedung/${productCount}.jpeg')`;
+}
 
-document.querySelector(".landing h1").innerHTML = address;
+// 2. Update Konten Teks dengan Pengaman
+function updateEl(selector, value) {
+  let el = document.querySelector(selector);
+  if (el && value) el.innerHTML = value;
+}
 
-document.querySelector(".landing .path").innerHTML = `
-  <a href="index.html">Home</a>
-  /
-  <a href="properties.html">Properties</a>
-  / ${address}
-`;
+updateEl(".landing h1", address);
+updateEl(".product h2", address);
+updateEl(".product h2 + p", place);
+updateEl(".product .price", price);
 
-document.querySelector(".product h2").innerHTML = address;
-document.querySelector(".product h2 + p").innerHTML = place;
-document.querySelector(".product .price").innerHTML = price;
-document.querySelector(
-  ".product .owner img"
-).src = `images/owner/${productCount}.jpeg`;
-
-document.querySelector(".product .owner .info h3").innerHTML =
-  ownersArr[productCount - 1];
+let pathEl = document.querySelector(".landing .path");
+if (pathEl && address) {
+  pathEl.innerHTML = `
+        <a href="index.html">Home</a> / 
+        <a href="index.html">Properties</a> / ${address}
+    `;
+}
