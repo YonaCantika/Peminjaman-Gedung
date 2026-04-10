@@ -1,0 +1,29 @@
+section.features {
+
+  .row {
+    .box {
+      background-color: $white;
+      padding: 2rem 1rem;
+      .image {
+        margin-bottom: 1rem;
+        img {
+          width: 5rem;
+        }
+      }
+
+      p {
+        line-height: 1.7;
+      }
+      a {
+        text-decoration: none;
+        font-size: $fs-14;
+        color: $primary;
+      }
+      transition: .3s;
+      border: 1px solid transparent;
+      &:hover {
+        border: 1px solid $primary;
+      }
+    }
+  }
+}

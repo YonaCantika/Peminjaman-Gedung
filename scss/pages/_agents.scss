@@ -1,0 +1,61 @@
+.agents {
+  .title {
+    margin-bottom: $section-padding * 2;
+    max-width: 31rem;
+  }
+  .row {
+    row-gap: 5.5rem;
+  }
+  .box {
+    background-color: $white;
+    position: relative;
+    padding: 0 1.5rem 2.5rem;
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      border: 10px solid #f8f9fa;
+      border-radius: 50%;
+    }
+    h3 {
+      padding-top: 4rem;
+    }
+    .job {
+      color: $text-color-dark;
+      font-size: $fs-13;
+    }
+    .words {
+      // color: $text-color-dark;
+      max-width: 31.25rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .social {
+      display: flex;
+      column-gap: .5rem;
+      justify-content: center;
+      span {
+        cursor: pointer;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: $primary;
+        color: $white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid transparent;
+        transition: .3s;
+        &:hover {
+          background-color: transparent;
+          border-color: $primary;
+          color: $primary;
+          transform: translateY(-.25rem);
+        }
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,44 @@
+.facts {
+  .title {
+    margin-bottom: $section-padding;
+    max-width: 31rem;
+  }
+  .services {
+    
+    .items {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: space-evenly;
+      
+      .item {
+        display: flex;
+        gap: 1rem;
+        @media (max-width: 991px) {
+          justify-content: center;
+        }
+        .icon {
+          background-color: $control-bg-color;
+          width: 4.375rem;
+          height: 4.375rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          transition: .3s;
+        }
+        .info {
+          width: 70%;
+        }
+        &:hover {
+          .icon {
+            border-color: $primary;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

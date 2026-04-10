@@ -1,0 +1,41 @@
+.contact {
+  .item {
+    display: flex;
+    gap: 1rem;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    span {
+      height: 3rem;
+      width: 3rem;
+      background-color: $primary;
+      color: $white;
+      text-align: center;
+      line-height: 3rem;
+      border-radius: 50%;
+    }
+  }
+  form {
+    > div {
+      display: flex;
+      gap: 1rem;
+    }
+    input,
+    textarea {
+      &:focus {
+        border-color: $primary;
+      }
+      &::placeholder {
+        color: $text-color-black-50;
+        transition: 0.3s;
+      }
+      &:focus::placeholder {
+        opacity: 0;
+      }
+    }
+    textarea {
+      height: 10rem;
+    }
+  }
+
+}

@@ -1,0 +1,25 @@
+.my-btn {
+  padding: 0.938rem 1.875rem;
+  background-color: $secondary;
+  color: $white;
+  border-radius: 50rem;
+  border: none;
+  transition: 0.3s;
+  &:hover {
+    background-color: $secondary-hover;
+  }
+}
+
+.control-btn {
+  background-color: $control-bg-color;
+  color: $primary;
+  padding: 0.438rem 1.25rem;
+  font-size: $fs-14;
+  border-radius: 50rem;
+  border: none;
+  transition: 0.3s;
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+}
