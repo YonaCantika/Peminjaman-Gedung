@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Jadwal - MWB Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --mwb-green: #064e3b;
+            --mwb-accent: #059669;
+            --mwb-light: #f0fdf4;
+        }
+
+        body {
+            background-color: var(--mwb-light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: var(--mwb-green);
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 25px;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            padding: 12px 15px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link i {
+            margin-right: 12px;
+            width: 20px;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: #6ee7b7;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 260px;
+            padding: 40px;
+        }
+
+        /* Card Custom */
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+
+        /* Calendar Styles */
+        .calendar-container {
+            max-width: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .calendar-header {
+            background: var(--mwb-green);
+            color: white;
+            padding: 20px;
+        }
+
+        .days-name-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: #64748b;
+            padding: 15px 15px 5px;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 0 15px 15px;
+        }
+
+        .day {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.2s;
+            border: 1px solid #f1f5f9;
+        }
+
+        .day:hover:not(.booked):not(:empty) {
+            background-color: var(--mwb-light);
+            color: var(--mwb-accent);
+        }
+
+        .day.booked {
+            background-color: #fee2e2;
+            color: #ef4444;
+            cursor: not-allowed;
+            font-weight: bold;
+            border-color: #fecaca;
+        }
+
+        .day.selected {
+            background-color: var(--mwb-accent) !important;
+            color: white !important;
+            font-weight: bold;
+            border-color: var(--mwb-accent);
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .form-select-custom {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar shadow-lg">
+        <div class="d-flex align-items-center mb-5 px-2">
+            <span class="fs-4 fw-bold">🏠 MWB Admin</span>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="#">📊 Overview</a>
+            <a class="nav-link" href="#">📋 Pemesanan</a>
+            <a class="nav-link active" href="#">🗓️ Jadwal Gedung</a>
+        </nav>
+        <div style="position: absolute; bottom: 30px; width: 210px;">
+            <hr class="text-white-50">
+            <a class="nav-link text-warning mb-0" href="#">🔓 Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header mb-4">
+            <h2 class="fw-bold text-dark">Kelola Jadwal</h2>
+            <p class="text-muted">Atur dan pantau ketersediaan unit gedung secara real-time.</p>
+        </div>
+
+        <div class="card card-custom p-4">
+            <h6 class="fw-bold mb-3"><i class="fa-solid fa-building me-2"></i>Pilih Gedung</h6>
+            <select class="form-select form-select-custom">
+                <option selected>Gedung Dharma Wanita</option>
+                <option>Gedung Paruga Samakai</option>
+                <option>Gedung PKK</option>
+            </select>
+        </div>
+
+        <div class="card card-custom p-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h6 class="fw-bold mb-3"><i class="fa-solid fa-calendar-check me-2"></i>Kalender Jadwal</h6>
+                    <p class="text-muted small mb-4">Tanggal berwarna merah menandakan gedung sudah dipesan untuk acara
+                        lain.</p>
+
+                    <div class="calendar-container border shadow-sm">
+                        <div class="calendar-header d-flex justify-content-between align-items-center">
+                            <button id="prevMonth" class="btn btn-sm text-white"><i
+                                    class="fa-solid fa-chevron-left"></i></button>
+                            <h5 id="monthDisplay" class="m-0 fw-bold text-white">April 2026</h5>
+                            <button id="nextMonth" class="btn btn-sm text-white"><i
+                                    class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+
+                        <div class="calendar-body">
+                            <div class="days-name-grid">
+                                <div>MIN</div>
+                                <div>SEN</div>
+                                <div>SEL</div>
+                                <div>RAB</div>
+                                <div>KAM</div>
+                                <div>JUM</div>
+                                <div>SAB</div>
+                            </div>
+                            <div id="calendarGrid" class="days-grid">
+                            </div>
+                        </div>
+
+                        <div class="calendar-footer p-3 border-top d-flex gap-3 justify-content-center bg-light">
+                            <div class="small"><span class="legend-dot bg-white border"></span> Tersedia</div>
+                            <div class="small"><span class="legend-dot bg-danger"></span> Dipesan</div>
+                            <div class="small"><span class="legend-dot"
+                                    style="background-color: var(--mwb-accent);"></span> Dipilih</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 offset-lg-1 mt-4 mt-lg-0">
+                    <div class="p-4 rounded-4"
+                        style="background-color: var(--mwb-light); border: 1px dashed var(--mwb-accent);">
+                        <h6 class="fw-bold text-dark mb-3">Detail Ketersediaan</h6>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2 text-muted">Klik pada tanggal yang tersedia (putih) untuk melihat detail
+                                atau memproses booking manual.</li>
+                            <hr>
+                            <li class="d-flex justify-content-between">
+                                <span>Status Unit:</span>
+                                <span class="badge bg-success">Aktif / Disewakan</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const monthDisplay = document.getElementById('monthDisplay');
+        const calendarGrid = document.getElementById('calendarGrid');
+        const prevBtn = document.getElementById('prevMonth');
+        const nextBtn = document.getElementById('nextMonth');
+
+        let currentDate = new Date(); // Inisialisasi tanggal saat ini
+
+        // Contoh data booking dari database (Format: YYYY-MM-DD)
+        const bookedDates = ['2026-04-03', '2026-04-04', '2026-04-05', '2026-04-12'];
+
+        function renderCalendar() {
+            calendarGrid.innerHTML = "";
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+
+            // Set Header Bulan & Tahun
+            monthDisplay.innerText = new Intl.DateTimeFormat('id-ID', {
+                month: 'long',
+                year: 'numeric'
+            }).format(currentDate);
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            // Padding hari kosong di awal bulan
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.classList.add('day');
+                emptyDiv.style.border = "none"; // Hilangkan border untuk kotak kosong
+                calendarGrid.appendChild(emptyDiv);
+            }
+
+            // Render setiap tanggal
+            for (let i = 1; i <= lastDate; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.classList.add('day');
+                dayDiv.innerText = i;
+
+                // Format string untuk pengecekan status booking
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+
+                // Beri warna merah jika sudah dibooking
+                if (bookedDates.includes(dateStr)) {
+                    dayDiv.classList.add('booked');
+                }
+
+                // Fungsi Klik
+                dayDiv.onclick = function () {
+                    if (!dayDiv.classList.contains('booked')) {
+                        // Reset pilihan sebelumnya
+                        document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+                        // Tandai yang baru dipilih
+                        dayDiv.classList.add('selected');
+                        console.log("Admin meninjau tanggal:", dateStr);
+                    }
+                };
+
+                calendarGrid.appendChild(dayDiv);
+            }
+        }
+
+        prevBtn.onclick = () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        };
+
+        nextBtn.onclick = () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        };
+
+        // Jalankan saat pertama kali dimuat
+        renderCalendar();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

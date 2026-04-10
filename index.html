@@ -12,6 +12,252 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- style -->
   <link rel="stylesheet" href="scss/style.css" />
+  <style>
+    .landing {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landing .overlay {
+      background: linear-gradient(135deg, rgba(0, 32, 74, 0.7) 0%, rgba(0, 85, 85, 0.5) 100%);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .landing-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .landing h1 {
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .landing-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-input {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+      transition: 0.3s;
+    }
+
+    .search-input:focus {
+      box-shadow: 0 6px 20px rgba(0, 85, 85, 0.3) !important;
+      transform: translateY(-2px);
+    }
+
+    .btn-search {
+      box-shadow: 0 4px 15px rgba(0, 85, 85, 0.3);
+      transition: all 0.3s;
+    }
+
+    .btn-search:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 85, 85, 0.4);
+    }
+
+    .landing .wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      fill: #fff;
+      z-index: 10;
+    }
+
+    .property-card {
+      border-radius: 1rem !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s;
+    }
+
+    .property-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 85, 85, 0.2);
+    }
+
+    .property-card .image {
+      position: relative;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .property-card .image img {
+      transition: all 0.6s ease;
+    }
+
+    .property-card:hover .image img {
+      transform: scale(1.1);
+      filter: brightness(0.9);
+    }
+
+    .property-card .image-overlay {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 85, 85, 0.5), rgba(0, 32, 74, 0.3));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+
+    .property-card:hover .image-overlay {
+      opacity: 1;
+    }
+
+    .badge-featured,
+    .badge-hot {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 0.5rem 1rem;
+      border-radius: 50rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .badge-featured {
+      background: linear-gradient(135deg, #005555, #004444);
+      color: white;
+    }
+
+    .badge-hot {
+      background: linear-gradient(135deg, #ff4757, #ff6348);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .property-card .property-description {
+      font-size: 0.875rem;
+      color: rgba(0, 0, 0, 0.5);
+      line-height: 1.5;
+    }
+
+    .facts .item {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.4s;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .facts .item:hover {
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 85, 85, 0.15);
+      transform: translateY(-5px);
+      padding-left: 2rem;
+    }
+
+    .facts .icon {
+      background: linear-gradient(135deg, #005555, #004444);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0, 85, 85, 0.2);
+      transition: all 0.3s;
+    }
+
+    .facts .item:hover .icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #00204a, #005555);
+      box-shadow: 0 8px 25px rgba(0, 32, 74, 0.3);
+    }
+
+    .facts .info h4 {
+      color: #00204a;
+      transition: color 0.3s;
+    }
+
+    .facts .item:hover .info h4 {
+      color: #005555;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #00204a, #001025);
+    }
+
+    footer h4 {
+      color: white;
+    }
+
+    footer h4::after {
+      width: 50px;
+      height: 2px;
+      background: #005555;
+    }
+
+    footer .icons a {
+      transition: all 0.3s;
+    }
+
+    footer .icons a:hover {
+      background-color: #005555;
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 4px 25px rgba(255, 71, 87, 0.5);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .wow {
+      animation-fill-mode: both;
+    }
+
+    .wow.fadeInDown {
+      animation: slideDown 0.8s ease-out both;
+    }
+
+    .wow.fadeInUp {
+      animation: slideUp 0.8s ease-out both;
+    }
+  </style>
 </head>
 
 <body>
@@ -51,14 +297,26 @@
   <section class="landing" style="background-image: url(&quot;images/gedung/3.jpeg&quot;);">
     <div class="overlay"></div>
     <div class="container position-relative z-2">
-      <h1 class="lh-base text-center text-uppercase mb-4 mb-md-5">
-        Easiest way to find your dream home
-      </h1>
-      <form class="d-flex justify-content-center align-items-center row-gap-3 column-gap-2" action="">
-        <input class="form-control shadow-none" type="text" placeholder="Your ZIP code or City. e.g. New York" />
-        <button class="my-btn" type="submit">Search</button>
-      </form>
+      <div class="landing-content">
+        <h1 class="lh-base text-center text-uppercase mb-4 mb-md-5 wow fadeInDown" style="animation-delay: 0.2s;">
+          Easiest way to find your dream home
+        </h1>
+        <p class="landing-subtitle text-center wow fadeInUp" style="animation-delay: 0.4s;">
+          Cari dan pesan gedung terbaik untuk acara spesial Anda dengan mudah
+        </p>
+        <form class="d-flex justify-content-center align-items-center row-gap-3 column-gap-2 wow fadeInUp" action=""
+          style="animation-delay: 0.6s;">
+          <input class="form-control shadow-none search-input" type="text"
+            placeholder="Your ZIP code or City. e.g. New York" />
+          <button class="my-btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
     </div>
+    <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" style="margin-top: -1px;">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.87,168.19-17.38,250.45-.39C823.78,31,906.4,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        fill="#fff"></path>
+    </svg>
   </section>
 
   <section id="gedung-section" class="properties py-section">
@@ -71,114 +329,125 @@
       </div>
       <div class="row gx-4 gy-5">
 
-        <div class="col-sm-6 col-lg-4">
-          <div class="box rounded-1 shadow-sm">
-            <div class="image">
-              <img class="img-fluid rounded-top-1" src="images/gedung/1.jpeg" alt="" />
+        <div class="col-sm-6 col-lg-4 wow fadeInUp" style="animation-delay: 0.1s;">
+          <div class="box rounded-2 shadow-sm property-card">
+            <div class="image position-relative overflow-hidden">
+              <span class="badge-featured">Recommended</span>
+              <img class="img-fluid rounded-top-2" src="images/gedung/1.jpeg" alt="Gedung Dharma Wanita" />
+              <div class="image-overlay"></div>
             </div>
             <div class="info">
-              <span class="price h3 d-block">$1,291,000</span>
-              <p class="address">Jl. Beringin No. 2, Kabupaten Dompu</p>
+              <span class="price h3 d-block">Rp 5,000,000</span>
+              <p class="address"><i class="fas fa-map-marker-alt"></i> Jl. Beringin No. 2, Kabupaten Dompu</p>
               <h3>Gedung Dharma Wanita</h3>
+              <p class="property-description">Gedung serbaguna dengan fasilitas lengkap untuk berbagai macam acara</p>
               <div class="features">
                 <div class="item">
-                  <i class="fa-solid fa-bed"></i>
-                  2 beds
+                  <i class="fa-solid fa-people-group"></i>
+                  Kapasitas 200 org
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-bath"></i>
-                  2 baths
+                  <i class="fa-solid fa-wifi"></i>
+                  WiFi
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-warehouse"></i>
-                  1 garage
+                  <i class="fa-solid fa-car"></i>
+                  Parkir
                 </div>
               </div>
-              <button class="my-btn">See Details</button>
+              <button class="my-btn w-100">Lihat Detail</button>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-lg-4">
-          <div class="box rounded-1 shadow-sm">
-            <div class="image">
-              <img class="img-fluid rounded-top-1" src="images/gedung/2.jpeg" alt="" />
+        <div class="col-sm-6 col-lg-4 wow fadeInUp" style="animation-delay: 0.2s;">
+          <div class="box rounded-2 shadow-sm property-card">
+            <div class="image position-relative overflow-hidden">
+              <span class="badge-hot">Hot Deal</span>
+              <img class="img-fluid rounded-top-2" src="images/gedung/2.jpeg" alt="Gedung PKK" />
+              <div class="image-overlay"></div>
             </div>
             <div class="info">
-              <span class="price h3 d-block">$1,114,900</span>
-              <p class="address">Kabupaten Dompu</p>
+              <span class="price h3 d-block">Rp 3,500,000</span>
+              <p class="address"><i class="fas fa-map-marker-alt"></i> Kabupaten Dompu</p>
               <h3>Gedung PKK</h3>
+              <p class="property-description">Gedung modern dengan desain minimalis dan teknologi terkini</p>
               <div class="features">
                 <div class="item">
-                  <i class="fa-solid fa-bed"></i>
-                  2 beds
+                  <i class="fa-solid fa-people-group"></i>
+                  Kapasitas 150 org
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-bath"></i>
-                  2 baths
+                  <i class="fa-solid fa-wifi"></i>
+                  WiFi
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-warehouse"></i>
-                  1 garage
+                  <i class="fa-solid fa-car"></i>
+                  Parkir
                 </div>
               </div>
-              <button class="my-btn">See Details</button>
+              <button class="my-btn w-100">Lihat Detail</button>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-lg-4">
-          <div class="box rounded-1 shadow-sm">
-            <div class="image">
-              <img class="img-fluid rounded-top-1" src="images/gedung/3.jpeg" alt="" />
+        <div class="col-sm-6 col-lg-4 wow fadeInUp" style="animation-delay: 0.3s;">
+          <div class="box rounded-2 shadow-sm property-card">
+            <div class="image position-relative overflow-hidden">
+              <img class="img-fluid rounded-top-2" src="images/gedung/3.jpeg" alt="Gedung Montabaru" />
+              <div class="image-overlay"></div>
             </div>
             <div class="info">
-              <span class="price h3 d-block">$1,184,900</span>
-              <p class="address">Kecamatan Woja, Kabupaten Dompu</p>
+              <span class="price h3 d-block">Rp 6,000,000</span>
+              <p class="address"><i class="fas fa-map-marker-alt"></i> Kecamatan Woja, Kabupaten Dompu</p>
               <h3>Gedung Montabaru (Serbaguna)</h3>
+              <p class="property-description">Gedung terluas dengan berbagai fasilitas premium untuk acara besar</p>
               <div class="features">
                 <div class="item">
-                  <i class="fa-solid fa-bed"></i>
-                  2 beds
+                  <i class="fa-solid fa-people-group"></i>
+                  Kapasitas 300 org
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-bath"></i>
-                  2 baths
+                  <i class="fa-solid fa-wifi"></i>
+                  WiFi
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-warehouse"></i>
-                  1 garage
+                  <i class="fa-solid fa-car"></i>
+                  Parkir
                 </div>
               </div>
-              <button class="my-btn">See Details</button>
+              <button class="my-btn w-100">Lihat Detail</button>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-lg-4">
-          <div class="box rounded-1 shadow-sm">
-            <div class="image">
-              <img class="img-fluid rounded-top-1" src="images/gedung/4.jpeg" alt="" />
+        <div class="col-sm-6 col-lg-4 wow fadeInUp" style="animation-delay: 0.4s;">
+          <div class="box rounded-2 shadow-sm property-card">
+            <div class="image position-relative overflow-hidden">
+              <img class="img-fluid rounded-top-2" src="images/gedung/4.jpeg" alt="Gedung Paruga Samakai" />
+              <div class="image-overlay"></div>
             </div>
             <div class="info">
-              <span class="price h3 d-block">$1,369,900</span>
-              <p class="address">Kabupaten Dompu</p>
+              <span class="price h3 d-block">Rp 4,500,000</span>
+              <p class="address"><i class="fas fa-map-marker-alt"></i> Kabupaten Dompu</p>
               <h3>Gedung Paruga Samakai</h3>
+              <p class="property-description">Gedung elegant dengan interior yang nyaman dan mendukung berbagai acara
+              </p>
               <div class="features">
                 <div class="item">
-                  <i class="fa-solid fa-bed"></i>
-                  3 beds
+                  <i class="fa-solid fa-people-group"></i>
+                  Kapasitas 250 org
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-bath"></i>
-                  1 baths
+                  <i class="fa-solid fa-wifi"></i>
+                  WiFi
                 </div>
                 <div class="item">
-                  <i class="fa-solid fa-warehouse"></i>
-                  2 garage
+                  <i class="fa-solid fa-car"></i>
+                  Parkir
                 </div>
               </div>
-              <button class="my-btn">See Details</button>
+              <button class="my-btn w-100">Lihat Detail</button>
             </div>
           </div>
         </div>
@@ -246,8 +515,8 @@
                 <span>4</span>
               </div>
               <div class="info">
-                <h4>Konfirmasi Pembayaran</h4>
-                <p>Lakukan pembayaran sesuai tarif retribusi dan unggah bukti transfer untuk verifikasi.</p>
+                <h4>Verifikasi Admin</h4>
+                <p>Admin kami akan memverifikasi data dan bukti pembayaran Anda dalam waktu 1x24 jam.</p>
               </div>
             </div>
 
@@ -256,8 +525,8 @@
                 <span>5</span>
               </div>
               <div class="info">
-                <h4>Konfirmasi Pembayaran</h4>
-                <p>Lakukan pembayaran sesuai tarif retribusi dan unggah bukti transfer untuk verifikasi.</p>
+                <h4>Pemesanan Dikonfirmasi</h4>
+                <p>Setelah verifikasi selesai, pesanan Anda akan dikonfirmasi dan Anda dapat menggunakan gedung.</p>
               </div>
             </div>
 
@@ -266,8 +535,9 @@
                 <span>6</span>
               </div>
               <div class="info">
-                <h4>Konfirmasi Pembayaran</h4>
-                <p>Lakukan pembayaran sesuai tarif retribusi dan unggah bukti transfer untuk verifikasi.</p>
+                <h4>Gunakan Gedung</h4>
+                <p>Silakan datang sesuai jadwal yang telah disepakati dan nikmati gedung dengan fasilitas lengkapnya.
+                </p>
               </div>
             </div>
 
@@ -359,6 +629,35 @@
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/apply.js"></script>
+  <script>
+    // Scroll Animation with IntersectionObserver
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all .wow elements for animation
+    document.querySelectorAll('.wow').forEach(element => {
+      element.style.opacity = '0';
+      observer.observe(element);
+    });
+
+    // Property card hover effect enhancement
+    document.querySelectorAll('.property-card').forEach(card => {
+      card.addEventListener('mouseenter', function () {
+        this.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      });
+    });
+  </script>
 </body>
 
 </html>

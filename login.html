@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - MWB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /* Menggunakan nuansa hijau gelap sesuai landing page */
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .btn-primary {
+            background-color: #047857;
+            /* Hijau Emerald */
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #065f46;
+        }
+
+        .form-control:focus {
+            border-color: #047857;
+            box-shadow: 0 0 0 0.25rem rgba(4, 120, 87, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card shadow">
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-dark">🌿 Admin Login</h3>
+            <p class="text-muted small">Panel Administrator MWB Dompu</p>
+        </div>
+
+        <form>
+            <div class="mb-3">
+                <label class="form-label fw-semibold small">Email Address</label>
+                <input type="email" class="form-control" placeholder="admin@mwb.go.id">
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-semibold small">Password</label>
+                <input type="password" class="form-control" placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 rounded-3">Masuk Sekarang</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
